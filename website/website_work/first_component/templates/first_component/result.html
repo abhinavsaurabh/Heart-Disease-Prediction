@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+<style>
+#table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table td, #table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<title>Your Results</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+
+
+<!--//fonts-->
+</head>
+<body>
+
+
+
+
+    <h1>Results</h1>
+    <div class="bg-agile">
+        <div class="book-appointment">
+        {% if predicted %}
+            <div class="card" role="alert">
+            <div class="header-main">
+                <h3 style="color:red;">'1' indicates the algorithm has predicted presence of disease</h3>
+                {% if result %}
+                <h2 class="table-danger text-center" style="color:red;"><b>You have a risk of heart disease</b></h2>
+                {% else %}
+                <h2 class="table-success  text-center" style="color:green;"><b>You do not have a risk of heart disease</b></h2>
+                {% endif %}
+            </div>
+                <div class="card-body">
+                    <div class="table-responsive justify-content-center">
+                                    <table id="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Algorithm</th>
+                                                <th>Risk of Heart Disease</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>MLP Classifier</td>
+                                                <td>{{predictions.MLP}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>SVC Classifier</td>
+                                                <td>{{predictions.SVC}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Decision Tree Classifier</td>
+                                                <td>{{predictions.DecisionTree}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>KNN</td>
+                                                <td>{{predictions.KNN}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Random Forest</td>
+                                                <td>{{predictions.RF}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Gaussina NB</td>
+                                                <td>{{predictions.Bayes}}</td>
+                                            </tr>
+
+                                             <tr>
+                                                <td>Logistic Regression</td>
+                                                <td>{{predictions.LR}}</td>
+                                            </tr>
+
+
+                                             <tr>
+                                                <td>XGB</td>
+                                                <td>{{predictions.XGB}}</td>
+                                            </tr>
+
+                                             <tr>
+                                                <td>Voting</td>
+                                                <td>{{predictions.Voting}}</td>
+                                            </tr>
+                                        
+
+                                        </tbody>
+
+                                    </table>
+                     </div>
+                </div>
+            </div>
+
+    {% endif %}
+        
+        </div>
+    </div>
+
+
+    <h1 align="center">LIME Explainer Dashboard</h1>
+    <h3 style="margin: 0px 0px 0px 80px;"> <em> Orange color signifies the positive impact and blue color signifies the negative
+      impact of that feature on the prediction. For instance, if age is colored orange and prediction is 1, that means age contributed for the prediction of heart disease.</em></h3>
+    
+
+    {% if exp_lime_mlp %}
+        <h3 align="center">LIME-explained results using MLP Classifier</h3>
+        <div class="container">
+            <iframe src="{% static 'first_component/explanations/explanation_mlp.html' %}" height="300" width="100%" title="LIME explanation"></iframe>
+        </div>
+    {% endif %}
+
+    {% if exp_lime_svm %}
+        <h3 align="center">LIME-explained results using SVM Classifier</h3>
+        <div class="container">
+            <iframe src="{% static 'first_component/explanations/explanation_svm.html' %}" height="300" width="100%" title="LIME explanation"></iframe>
+        </div>
+    {% endif %}
+
+
+    {% if exp_lime_knn %}
+        <h3 align="center">LIME-explained results using KNN Classifier</h3>
+        <div class="container">
+            <iframe src="{% static 'first_component/explanations/explanation_knn.html' %}" height="300" width="100%" title="LIME explanation"></iframe>
+        </div>
+    {% endif %}
+
+
+    {% if exp_lime_rf %}
+        <h3 align="center">LIME-explained results using Random Forest Classifier</h3>
+        <div class="container">
+            <iframe src="{% static 'first_component/explanations/explanation_rf.html' %}" height="300" width="100%" title="LIME explanation"></iframe>
+        </div>
+    {% endif %}
+
+    {% if exp_lime_dt %}
+        <h3 align="center">LIME-explained results using Decision Tree Classifier</h3>
+        <div class="container">
+            <iframe src="{% static 'first_component/explanations/explanation_dt.html' %}" height="300" width="100%" title="LIME explanation"></iframe>
+        </div>
+    {% endif %}
+
+    {% if exp_lime_bayes %}
+        <h3 align="center">LIME-explained results using Gaussian NB</h3>
+        <div class="container">
+            <iframe src="{% static 'first_component/explanations/explanation_bayes.html' %}" height="300" width="100%" title="LIME explanation"></iframe>
+        </div>
+    {% endif %}
+
+    {% if exp_lime_lr %}
+        <h3 align="center">LIME-explained results using Logistic Regression</h3>
+        <div class="container">
+            <iframe src="{% static 'first_component/explanations/explanation_lr.html' %}" height="300" width="100%" title="LIME explanation"></iframe>
+        </div>
+    {% endif %}
+
+    {% if exp_lime_xgb %}
+        <h3 align="center">LIME-explained results using XGB</h3>
+        <div class="container">
+            <iframe src="{% static 'first_component/explanations/explanation_xgb.html' %}" height="300" width="100%" title="LIME explanation"></iframe>
+        </div>
+    {% endif %}
+
+
+
+
+
+</body>
+</html>
+ 
+   

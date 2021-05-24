@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<title>Heart Disease Prediction System</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #111;
+  }
+
+</style>  
+
+<body id="myPage">
+
+
+
+<!-- Navbar -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+  <nav class="navbar navbar-default navbar-static-top">
+             <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="{% url 'index' %}">HOME</a></li>
+                    <li><a class="navbar-link" href="{% url 'first_component:predict' %}">PREDICT</a></li>
+                    <li><a class="navbar-link" href="{% url 'admin:index' %}">ADMIN</a></li>
+                    
+                        
+                </ul>
+             </div>
+    </nav>
+  </div>
+ </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium">
+    <nav class="navbar navbar-default navbar-static-top">
+             <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="{% url 'index' %}">HOME</a></li>
+                    <li><a class="navbar-link" href="{% url 'first_component:predict' %}">PREDICT</a></li>
+                    <li><a class="navbar-link" href="{% url 'admin:index' %}">ADMIN</a></li>
+                    
+                        
+                </ul>
+             </div>
+    </nav>
+  </div>
+</div>
+
+<!-- Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+  <img src="{% static 'first_component/image1.jpg' %}" alt="BgImage" style="width:100%;min-height:350px;max-height:500px;">
+</div>
+
+<!-- Modal -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-top">
+    <header class="w3-container w3-teal w3-display-container"> 
+      <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-display-topright"><i class="fa fa-remove"></i></span>
+      <h4>Oh snap! We just showed you a modal..</h4>
+      <h5>Because we can <i class="fa fa-smile-o"></i></h5>
+    </header>
+    <div class="w3-container">
+      <p>Cool huh? Ok, enough teasing around..</p>
+      <p>Go to our <a class="w3-text-teal" href="/w3css/default.asp">W3.CSS Tutorial</a> to learn more!</p>
+    </div>
+    <footer class="w3-container w3-teal">
+      <p>Modal footer</p>
+    </footer>
+  </div>
+</div>
+
+<!-- Team Container -->
+<div class="w3-container w3-padding-64 w3-center" id="team">
+<h2>OUR TEAM</h2>
+
+
+<div class="w3-row"><br>
+
+<div class="w3-quarter">
+  <img src="{% static 'first_component/profile1.jpg' %}" alt="Member 1" style="width:45%;margin: 0px 0px 0px 150px;" class="w3-circle w3-hover-opacity">
+  <h3 style="margin: 0px 0px 0px 150px;">Apoorv Lokhande</h3>
+</div>
+
+<div class="w3-quarter">
+  <img src="{% static 'first_component/profile.jpg' %}" alt="Member 2" style="width:45%;margin: 0px 0px 0px 230px;" class="w3-circle w3-hover-opacity">
+  <h3 style="margin: 0px 0px 0px 260px;">Abhinav Saurabh</h3>
+</div>
+
+<div class="w3-quarter">
+  <img src="{% static 'first_component/profile.jpg' %}" alt="Member 3" style="width:45%;margin: 0px 0px 0px 250px;" class="w3-circle w3-hover-opacity">
+  <h3 style="margin: 0px 0px 0px 288px;">Shivam Mittal</h3>
+</div>
+
+
+
+</div>
+</div>
+
+<!-- Work Row -->
+<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+
+<div>
+  <h2 style="margin: 0px 0px 0px 600px;">Our Work</h2>
+  <h3 style="margin: 0px 0px 0px 282px;">This website gives prediction of having a Heart disease or not. Proceed to predict page!</h3>
+</div>
+
+</div>
+
+
+
+<!-- Contact Container -->
+<div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
+  <div class="w3-row">
+    <div class="w3-col m3" style="margin: 0px 0px 0px 200px;">
+    <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
+      <p>Apoorv Lokhande</p>
+      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i> Indore, M.P., India </p>
+      <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i> +918770103066</p>
+      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i> apoorv2001.99@gmail.com </p>
+      <a class="w3-button w3-large w3-teal w3-hide-small" href="https://www.linkedin.com/in/apoorv-lokhande-a95b4a160/" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+      <a class="w3-button w3-large w3-teal" href="https://github.com/apoorv098" title="Github"><i class="fa fa-github"></i></a>
+    </div>
+
+    <div class="w3-col m3">
+    <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
+      <p>Abhinav Saurabh</p>
+      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i> Indore, M.P., India </p>
+      <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i> +918770103066</p>
+      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i> apoorv2001.99@gmail.com </p>
+      <a class="w3-button w3-large w3-teal w3-hide-small" href="https://www.linkedin.com/in/apoorv-lokhande-a95b4a160/" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+      <a class="w3-button w3-large w3-teal" href="https://github.com/apoorv098" title="Github"><i class="fa fa-github"></i></a>
+    </div>
+
+    <div class="w3-col m3">
+    <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
+      <p>Shivam Mittal</p>
+      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i> Indore, M.P., India </p>
+      <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i> +918770103066</p>
+      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i> apoorv2001.99@gmail.com </p>
+      <a class="w3-button w3-large w3-teal w3-hide-small" href="https://www.linkedin.com/in/apoorv-lokhande-a95b4a160/" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+      <a class="w3-button w3-large w3-teal" href="https://github.com/apoorv098" title="Github"><i class="fa fa-github"></i></a>
+    </div>
+   
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <p>Copyright | 2021</p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+<script>
+// Script for side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "300px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+
+// Close side navigation
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>

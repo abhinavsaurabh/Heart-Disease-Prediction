@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+
+<title>Form</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style> 
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {border-radius: 8px;}
+
+
+</style>
+
+
+</head>
+<body style="background-color:#bbdefb;">
+
+  <h1>Predict your Heart disease</h1>
+	<h2>Medical Information</h2>
+        <form method="POST">
+                 {% csrf_token %}
+                 <table border="1">
+                   {{ form.as_p }}
+                 </table>
+                 <input type = "submit" class="button button1" value="Predict">
+        </form>
+  
+
+</body>
+</html>
