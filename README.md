@@ -1,6 +1,15 @@
 # BDMH_Project
 This repo contains code about heart disease prediction system using Machine Learning and website development using Django
 
+#### RESULTS
+|  **Models**		                |	**Accuracy**	| 	
+| ------------- 	              | ------------- 	|    
+| Decision Tree |     75.63 %| 
+| Random Forest |     74.78 %| 
+| SVM|                82.35 %| 
+| KNN    |            80.67 %| 
+| Multilayer Perceptron |   85.71 %| 
+
 Inside the website Folder
 Steps to run:
 1. **create a virtual environment using:** </br>
